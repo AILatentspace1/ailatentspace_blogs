@@ -1,20 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter, Fira_Code } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const firaCode = Fira_Code({
-  subsets: ['latin'],
-  variable: '--font-fira-code',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+    <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
         <div className="min-h-screen flex flex-col">
           <Navigation />

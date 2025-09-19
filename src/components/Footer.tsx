@@ -1,7 +1,14 @@
+'use client'
+
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const [currentYear, setCurrentYear] = useState(2024)
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear())
+  }, [])
 
   const footerLinks = {
     Blog: [
@@ -28,7 +35,6 @@ const Footer = () => {
     <footer className="bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
@@ -44,7 +50,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="font-semibold text-gray-900 mb-4">{category}</h3>
@@ -64,7 +69,6 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom */}
         <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm">
             © {currentYear} AI Latent Space. All rights reserved.

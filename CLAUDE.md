@@ -88,3 +88,4 @@ description: "Brief description"
 - Code examples with syntax highlighting
 - Math equations supported via KaTeX
 - Images and diagrams in `/public/images/`
+- 请stop server，然后启动在3000端口，后面如果3000端口被占用的话先stop掉。
