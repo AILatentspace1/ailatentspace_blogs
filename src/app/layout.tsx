@@ -1,12 +1,49 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Fira_Code } from 'next/font/google'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  variable: '--font-fira-code',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'AI Latent Space Blog',
-  description: 'Daily AI research and tech insights',
+  title: {
+    default: 'AI Latent Space | Daily AI Research & Insights',
+    template: '%s | AI Latent Space'
+  },
+  description: 'Exploring the frontiers of artificial intelligence through daily research, insights, and technical deep-dives. Join the journey into AI\'s latent dimensions.',
+  keywords: ['AI', 'Machine Learning', 'Research', 'Technology', 'Blog'],
+  authors: [{ name: 'AI Latent Space' }],
+  creator: 'AI Latent Space',
+  publisher: 'AI Latent Space',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://ailatentspace1.github.io/ailatentspace_blogs/',
+    title: 'AI Latent Space | Daily AI Research & Insights',
+    description: 'Exploring the frontiers of artificial intelligence through daily research, insights, and technical deep-dives.',
+    siteName: 'AI Latent Space',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Latent Space | Daily AI Research & Insights',
+    description: 'Exploring the frontiers of artificial intelligence through daily research, insights, and technical deep-dives.',
+    creator: '@ailatentspace',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
@@ -15,20 +52,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-white">
-          <header className="border-b border-gray-200">
-            <div className="max-w-4xl mx-auto px-4 py-6">
-              <h1 className="text-2xl font-bold text-gray-900">
-                <a href="/">AI Latent Space</a>
-              </h1>
-              <p className="text-gray-600 mt-1">Daily AI Research & Tech Insights</p>
-            </div>
-          </header>
-          <main className="max-w-4xl mx-auto px-4 py-8">
+    <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+      <body className="bg-white text-gray-900 antialiased">
+        <div className="min-h-screen flex flex-col">
+          <Navigation />
+          <main className="flex-grow">
             {children}
           </main>
+          <Footer />
         </div>
       </body>
     </html>
