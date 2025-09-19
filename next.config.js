@@ -5,9 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  experimental: {
-    mdxRs: true
-  }
+  basePath: process.env.NODE_ENV === 'production' ? '/ailatentspace_blogs' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/ailatentspace_blogs/' : ''
 }
 
 module.exports = nextConfig
