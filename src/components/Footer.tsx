@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { getAssetPath } from '@/lib/utils'
 
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState(2024)
@@ -40,7 +41,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 mr-3">
                 <Image
-                  src="/logo.png"
+                  src={getAssetPath("/logo.png")}
                   alt="AI Latent Space"
                   width={48}
                   height={48}

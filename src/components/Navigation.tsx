@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { getAssetPath } from '@/lib/utils'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,7 +31,7 @@ const Navigation = () => {
               <Link href="/" className="flex items-center">
                 <div className="w-12 h-12 mr-3">
                   <Image
-                    src="/logo.png"
+                    src={getAssetPath("/logo.png")}
                     alt="AI Latent Space"
                     width={48}
                     height={48}
@@ -83,7 +84,7 @@ const Navigation = () => {
             <Link href="/" className="flex items-center">
               <div className="w-12 h-12 mr-3">
                 <Image
-                  src="/logo.png"
+                  src={getAssetPath("/logo.png")}
                   alt="AI Latent Space"
                   width={48}
                   height={48}

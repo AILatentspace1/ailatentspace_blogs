@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeftIcon, ClockIcon, CalendarIcon } from '@heroicons/react/24/outline'
+import { getAssetPath } from '@/lib/utils'
 
 export default async function BlogPost() {
   const filePath = join(process.cwd(), 'src/content/posts/n8n-mcp-complete-guide.mdx')
@@ -99,7 +100,7 @@ export default async function BlogPost() {
             <div className="flex items-center">
               <div className="w-20 h-20 mr-4">
                 <Image
-                  src="/logo.png"
+                  src={getAssetPath("/logo.png")}
                   alt="AI Latent Space"
                   width={80}
                   height={80}
