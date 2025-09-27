@@ -6,7 +6,7 @@ export default function CategoriesPage() {
       name: 'AI Papers',
       description: 'Latest research papers and academic insights',
       count: 12,
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-green-500 to-green-600',
       href: '/categories/papers'
     },
     {
@@ -20,7 +20,7 @@ export default function CategoriesPage() {
       name: 'Experiments',
       description: 'Hands-on AI experiments and practical guides',
       count: 15,
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-green-500 to-green-600',
       href: '/categories/experiments'
     },
     {
@@ -69,7 +69,7 @@ export default function CategoriesPage() {
                 <p className="text-gray-600 mb-4">{category.description}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{category.count} posts</span>
-                  <span className="text-blue-600 font-medium text-sm">
+                  <span className="text-green-600 font-medium text-sm">
                     Explore →
                   </span>
                 </div>

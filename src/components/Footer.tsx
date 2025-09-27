@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const Footer = () => {
@@ -37,10 +38,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-sm">AI</span>
+              <div className="w-12 h-12 mr-3">
+                <Image
+                  src="/logo.png"
+                  alt="AI Latent Space"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="font-bold text-lg text-gray-900">
+              <span className="font-bold text-lg text-brand-green">
                 AI Latent Space
               </span>
             </div>

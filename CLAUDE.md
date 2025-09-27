@@ -14,8 +14,7 @@ This is an AI research blog built with Next.js, TypeScript, and Tailwind CSS, de
 
 ## Development Commands
 ```bash
-# Development
-npm run dev
+npm run dev -- --port 3001
 
 # Build
 npm run build
@@ -26,6 +25,11 @@ npm run lint
 # Type check
 npm run type-check
 ```
+
+## Running Locally
+1. Install dependencies: `npm install`
+2. Start development server: `npm run dev -- --port 3001`
+3. Open browser to: `http://localhost:3001`
 
 ## Project Structure
 ```

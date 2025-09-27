@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -27,10 +28,16 @@ const Navigation = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
-                  <span className="text-white font-bold text-sm">AI</span>
+                <div className="w-12 h-12 mr-3">
+                  <Image
+                    src="/logo.png"
+                    alt="AI Latent Space"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <span className="font-bold text-xl text-gray-900">
+                <span className="font-bold text-xl text-brand-green">
                   AI Latent Space
                 </span>
               </Link>
@@ -51,7 +58,7 @@ const Navigation = () => {
             <div className="hidden md:block">
               <Link
                 href="/newsletter"
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200"
+                className="bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200"
               >
                 Subscribe
               </Link>
@@ -74,10 +81,16 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-sm">AI</span>
+              <div className="w-12 h-12 mr-3">
+                <Image
+                  src="/logo.png"
+                  alt="AI Latent Space"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="font-bold text-xl text-gray-900">
+              <span className="font-bold text-xl text-brand-green">
                 AI Latent Space
               </span>
             </Link>
@@ -102,7 +115,7 @@ const Navigation = () => {
           <div className="hidden md:block">
             <Link
               href="/newsletter"
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200"
+              className="bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-200"
             >
               Subscribe
             </Link>
@@ -140,7 +153,7 @@ const Navigation = () => {
               ))}
               <Link
                 href="/newsletter"
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white block px-3 py-2 rounded-md text-base font-medium mt-4"
+                className="bg-gradient-to-r from-green-600 to-green-500 text-white block px-3 py-2 rounded-md text-base font-medium mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Subscribe

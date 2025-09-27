@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { ArrowLeftIcon, ClockIcon, CalendarIcon } from '@heroicons/react/24/outline'
 
 export default async function BlogPost() {
-  const filePath = join(process.cwd(), 'src/content/posts/how-to-write-blog.mdx')
+  const filePath = join(process.cwd(), 'src/content/posts/n8n-mcp-complete-guide.mdx')
   const fileContent = readFileSync(filePath, 'utf8')
   const { data: frontmatter, content } = matter(fileContent)
 
@@ -59,7 +59,7 @@ export default async function BlogPost() {
               </div>
               <div className="flex items-center">
                 <ClockIcon className="h-5 w-5 mr-2" />
-                <span>5 min read</span>
+                <span>12 min read</span>
               </div>
             </div>
           </div>

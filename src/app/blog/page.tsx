@@ -3,6 +3,15 @@ import Link from 'next/link'
 export default function BlogPage() {
   const posts = [
     {
+      slug: 'n8n-mcp-complete-guide',
+      title: 'Complete Guide to n8n-mcp: AI-Powered Workflow Automation with Claude Desktop',
+      date: '2024-09-27',
+      category: 'Tools',
+      excerpt: 'Learn how to install n8n-mcp, configure it with Claude Desktop, create AI-powered workflows, and test them with Postman for seamless automation.',
+      readTime: '12 min read',
+      tags: ['n8n', 'mcp', 'automation', 'claude', 'workflows', 'ai']
+    },
+    {
       slug: 'how-to-write-blog',
       title: 'How to Write Blog',
       date: '2024-09-19',
@@ -37,7 +46,7 @@ export default function BlogPage() {
               <article key={post.slug} className="border border-gray-200 rounded-lg p-8 bg-white hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
                       {post.category}
                     </span>
                     <time className="text-gray-500 text-sm">{post.date}</time>
@@ -45,7 +54,7 @@ export default function BlogPage() {
                   </div>
 
                   <Link href={`/blog/${post.slug}`} className="block group">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-200">
                       {post.title}
                     </h2>
                     <p className="text-gray-600 text-lg leading-relaxed mb-4">
@@ -64,7 +73,7 @@ export default function BlogPage() {
                   <div className="mt-4">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+                      className="inline-flex items-center text-green-600 hover:text-green-700 font-medium"
                     >
                       Read more →
                     </Link>
@@ -95,7 +104,7 @@ export default function BlogPage() {
           </p>
           <Link
             href="/newsletter"
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 inline-block"
+            className="bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 inline-block"
           >
             Subscribe to Newsletter
           </Link>
