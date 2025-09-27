@@ -104,7 +104,7 @@ export default async function BlogPost() {
                   alt="AI Latent Space"
                   width={80}
                   height={80}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rounded-logo"
                 />
               </div>
               <div>

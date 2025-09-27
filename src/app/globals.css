@@ -83,6 +83,7 @@ nav {
 .border-gray-300 { border-color: #d1d5db; }
 .rounded-lg { border-radius: 0.5rem; }
 .rounded-full { border-radius: 9999px; }
+.rounded-logo { border-radius: 50%; }
 
 /* Flexbox */
 .flex { display: flex; }

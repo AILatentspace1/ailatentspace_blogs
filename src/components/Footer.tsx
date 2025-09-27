@@ -45,7 +45,7 @@ const Footer = () => {
                   alt="AI Latent Space"
                   width={48}
                   height={48}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rounded-logo"
                 />
               </div>
               <span className="font-bold text-lg text-brand-green">
