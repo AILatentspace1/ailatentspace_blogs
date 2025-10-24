@@ -1,23 +1,33 @@
-# AI Latent Space Blog - Claude Instructions
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is an AI research blog built with Next.js, TypeScript, and Tailwind CSS, designed for daily AI tech research posts with comment system and newsletter signup functionality.
+AI research blog built with Next.js 15, TypeScript, and Tailwind CSS. Deployed as a static site to GitHub Pages at `/ailatentspace_blogs`.
 
 ## Tech Stack
 - **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Content**: MDX for blog posts
-- **Deployment**: GitHub Pages (static export)
-- **Comments**: Giscus (GitHub Discussions)
-- **Newsletter**: ConvertKit/Mailchimp integration
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS 3 with @tailwindcss/typography
+- **Content**: MDX with next-mdx-remote and gray-matter
+- **Deployment**: Static export to GitHub Pages
+- **Icons**: @heroicons/react
 
 ## Development Commands
-```bash
-npm run dev -- --port 3001
 
-# Build
+```bash
+# Install dependencies
+npm install
+
+# Development server (prefer port 3000, fallback to 3001 if occupied)
+npm run dev
+# If port 3000 is occupied, stop the existing server first
+
+# Production build (generates static export to ./out)
 npm run build
+
+# Start production server locally
+npm start
 
 # Lint
 npm run lint
@@ -26,70 +36,104 @@ npm run lint
 npm run type-check
 ```
 
-## Running Locally
-1. Install dependencies: `npm install`
-2. Start development server: `npm run dev -- --port 3001`
-3. Open browser to: `http://localhost:3001`
+## Key Architecture
 
-## Project Structure
+### Static Export Configuration
+The project uses Next.js static export mode (`output: 'export'`) for GitHub Pages deployment:
+- **basePath**: `/ailatentspace_blogs` (production only)
+- **assetPrefix**: `/ailatentspace_blogs/` (production only)
+- **images.unoptimized**: true (required for static export)
+- **trailingSlash**: true
+- Build output: `./out` directory
+
+### Import Aliases
+- `@/*` maps to `./src/*` (configured in tsconfig.json)
+- Example: `import Navigation from '@/components/Navigation'`
+- Use `getAssetPath()` from `@/lib/utils` for asset paths that need basePath handling
+
+### Blog Post Architecture
+**Important**: Blog posts require manual registration in two places:
+
+1. **Create MDX file** in `src/content/posts/[slug].mdx` with frontmatter:
+   ```mdx
+   ---
+   title: "Post Title"
+   date: "2025-MM-DD"
+   category: "Tools" | "Papers" | "Experiments" | "Tutorials"
+   tags: ["tag1", "tag2"]
+   description: "Post description"
+   ---
+   ```
+
+2. **Create page directory** at `src/app/blog/[slug]/page.tsx`:
+   - Import MDXRemote from 'next-mdx-remote/rsc'
+   - Use gray-matter to parse frontmatter
+   - Read MDX file from `src/content/posts/[slug].mdx`
+
+3. **Register in blog index** at `src/app/blog/page.tsx`:
+   - Add post metadata to the hardcoded `posts` array
+   - Posts are NOT automatically discovered
+
+**Note**: There is no dynamic route generation. Each blog post needs its own dedicated page directory.
+
+### Content Structure
 ```
 src/
 ├── app/
-│   ├── blog/[slug]/          # Individual blog posts
-│   ├── about/                # About page
-│   ├── newsletter/           # Newsletter signup
-│   └── layout.tsx           # Root layout
+│   ├── layout.tsx              # Root layout with Navigation/Footer
+│   ├── page.tsx                # Homepage
+│   ├── blog/
+│   │   ├── page.tsx            # Blog index (hardcoded posts array)
+│   │   ├── [slug]/             # Individual post pages (one dir per post)
+│   │   │   └── page.tsx
+│   ├── about/page.tsx
+│   ├── categories/page.tsx
+│   ├── newsletter/page.tsx
+│   └── globals.css
 ├── components/
-│   ├── BlogPost.tsx         # Blog post component
-│   ├── Comments.tsx         # Giscus comments
-│   ├── Newsletter.tsx       # Newsletter signup form
-│   └── Navigation.tsx       # Site navigation
-├── content/posts/           # MDX blog posts
-└── lib/                     # Utilities and helpers
+│   ├── Navigation.tsx          # Site navigation
+│   └── Footer.tsx              # Site footer
+├── content/posts/              # MDX blog posts
+│   └── *.mdx
+└── lib/
+    └── utils.ts                # Utilities (getAssetPath, etc.)
 ```
 
-## Blog Post Format
-Blog posts are written in MDX format with frontmatter:
+### Metadata & SEO
+Global metadata configured in `src/app/layout.tsx`:
+- Default title template: `%s | AI Latent Space`
+- OpenGraph and Twitter card support
+- Keywords, description, robots configuration
 
-```mdx
----
-title: "AI Research Title"
-date: "2024-01-01"
-category: "Papers" | "Tools" | "Experiments" | "Tutorials"
-tags: ["ai", "research", "ml"]
-description: "Brief description"
----
-
-# Post content here
-```
-
-## Categories
-- **Papers**: AI research paper analyses
-- **Tools**: AI tool reviews and tutorials
-- **Experiments**: Personal AI experiments
-- **Tutorials**: Technical tutorials and guides
-
-## Features Required
-- [x] Next.js setup with TypeScript
-- [ ] MDX configuration for blog posts
-- [ ] Blog post structure and metadata
-- [ ] Site layout and navigation
-- [ ] Giscus comment system
-- [ ] Newsletter signup component
-- [ ] GitHub Actions deployment
-- [ ] RSS feed generation
-- [ ] Search functionality
-- [ ] SEO optimization
+### Styling
+- Global styles in `src/app/globals.css`
+- Green theme (green-600, green-500 gradients)
+- Custom animations: `animate-fade-in`
+- Responsive design with Tailwind breakpoints (sm, md, lg)
 
 ## Deployment
-- Static export to GitHub Pages
-- Automated deployment via GitHub Actions
-- Custom domain support ready
 
-## Content Guidelines
-- Daily AI research posts
-- Technical accuracy required
-- Code examples with syntax highlighting
-- Math equations supported via KaTeX
-- Images and diagrams in `/public/images/`
-- 请stop server，然后启动在3000端口，后面如果3000端口被占用的话先stop掉。
+### GitHub Actions Workflow
+Location: `.github/workflows/deploy.yml`
+- Triggers on push/PR to `main` branch
+- Node.js 18
+- Runs `npm ci` then `npm run build`
+- Deploys `./out` directory to GitHub Pages
+
+### Production URL
+https://ailatentspace1.github.io/ailatentspace_blogs/
+
+## Important Notes
+
+1. **Asset Paths**: In production, all assets need the `/ailatentspace_blogs` prefix. Use `getAssetPath()` utility when needed.
+
+2. **Adding Blog Posts**: Remember to update THREE locations:
+   - MDX file in `src/content/posts/`
+   - Page directory in `src/app/blog/[slug]/`
+   - Posts array in `src/app/blog/page.tsx`
+
+3. **Images**: Place in `public/` directory. They're unoptimized for static export.
+
+4. **TypeScript**: Strict mode enabled. Use proper types, especially for frontmatter objects.
+
+5. **Development Server**: Prefer port 3000. If occupied, stop the existing process before starting a new one.
