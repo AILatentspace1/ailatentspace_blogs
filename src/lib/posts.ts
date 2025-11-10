@@ -14,8 +14,8 @@ export interface Post {
   author?: string
   series?: string
   part?: number
-  readTime?: string
-  excerpt?: string
+  readTime: string
+  excerpt: string
 }
 
 export function getAllPosts(): Post[] {
