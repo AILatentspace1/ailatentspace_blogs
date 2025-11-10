@@ -1,26 +1,8 @@
 import Link from 'next/link'
+import { getAllPosts } from '@/lib/posts'
 
 export default function BlogPage() {
-  const posts = [
-    {
-      slug: 'n8n-mcp-complete-guide',
-      title: 'Complete Guide to n8n-mcp: AI-Powered Workflow Automation with Claude Desktop',
-      date: '2024-09-27',
-      category: 'Tools',
-      excerpt: 'Learn how to install n8n-mcp, configure it with Claude Desktop, create AI-powered workflows, and test them with Postman for seamless automation.',
-      readTime: '12 min read',
-      tags: ['n8n', 'mcp', 'automation', 'claude', 'workflows', 'ai']
-    },
-    {
-      slug: 'how-to-write-blog',
-      title: 'How to Write Blog',
-      date: '2024-09-19',
-      category: 'Tutorials',
-      excerpt: 'A comprehensive guide on blog writing techniques and best practices for AI researchers and tech enthusiasts.',
-      readTime: '5 min read',
-      tags: ['blogging', 'writing', 'tutorial']
-    }
-  ]
+  const posts = getAllPosts()
 
   return (
     <div className="animate-fade-in">
