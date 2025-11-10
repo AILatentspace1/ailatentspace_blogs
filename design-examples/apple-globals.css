@@ -1,0 +1,366 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Apple风格全局样式
+   ============================================ */
+
+/* 基础样式 */
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-neutral-900;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 选中文本样式 */
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+
+  /* 焦点样式 */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-400 ring-offset-2;
+  }
+}
+
+/* ============================================
+   组件样式
+   ============================================ */
+
+@layer components {
+  /* 按钮基础样式 */
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply font-semibold tracking-tight;
+    @apply rounded-xl px-6 py-3;
+    @apply transition-all duration-200 ease-apple;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-400 text-white;
+    @apply shadow-apple-sm hover:shadow-apple-md;
+    @apply hover:bg-primary-500 hover:-translate-y-0.5;
+    @apply active:translate-y-0;
+    @apply focus-visible:ring-primary-400;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-neutral-900;
+    @apply border-2 border-neutral-200;
+    @apply shadow-apple-sm hover:shadow-apple-md;
+    @apply hover:bg-neutral-50 hover:border-neutral-300;
+    @apply focus-visible:ring-neutral-400;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-neutral-700;
+    @apply hover:bg-neutral-100 hover:text-neutral-900;
+  }
+
+  /* 卡片样式 */
+  .card {
+    @apply bg-white rounded-2xl;
+    @apply border border-neutral-200;
+    @apply shadow-apple-sm hover:shadow-apple-lg;
+    @apply transition-all duration-300 ease-apple;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-2 hover:border-neutral-300;
+  }
+
+  /* 输入框样式 */
+  .input {
+    @apply w-full px-4 py-3;
+    @apply bg-white border-2 border-neutral-200 rounded-xl;
+    @apply text-neutral-900 placeholder:text-neutral-400;
+    @apply transition-all duration-200;
+    @apply focus:border-primary-400 focus:ring-2 focus:ring-primary-100;
+    @apply hover:border-neutral-300;
+  }
+
+  /* Tag样式 */
+  .tag {
+    @apply inline-flex items-center;
+    @apply px-3 py-1 rounded-lg;
+    @apply text-sm font-medium;
+    @apply transition-colors duration-200;
+  }
+
+  .tag-primary {
+    @apply bg-primary-50 text-primary-700;
+    @apply hover:bg-primary-100;
+  }
+
+  .tag-neutral {
+    @apply bg-neutral-100 text-neutral-700;
+    @apply hover:bg-neutral-200;
+  }
+
+  /* Section标题 */
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+    @apply text-neutral-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-neutral-600;
+    @apply max-w-3xl mx-auto;
+  }
+}
+
+/* ============================================
+   工具类
+   ============================================ */
+
+@layer utilities {
+  /* 文字渐变 */
+  .gradient-text {
+    @apply bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-400;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* 毛玻璃效果 */
+  .glass-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* 隐藏滚动条但保持滚动功能 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 自定义动画延迟 */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+/* ============================================
+   Prose样式（博客内容）- Apple风格
+   ============================================ */
+
+.prose {
+  @apply max-w-none;
+  @apply text-neutral-700;
+}
+
+.prose h1 {
+  @apply text-4xl md:text-5xl font-bold tracking-tight;
+  @apply text-neutral-900 mb-6 mt-12;
+  @apply leading-tight;
+}
+
+.prose h2 {
+  @apply text-3xl md:text-4xl font-bold tracking-tight;
+  @apply text-neutral-900 mb-5 mt-10;
+  @apply leading-tight;
+}
+
+.prose h3 {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  @apply text-neutral-900 mb-4 mt-8;
+}
+
+.prose h4 {
+  @apply text-xl md:text-2xl font-semibold;
+  @apply text-neutral-900 mb-3 mt-6;
+}
+
+.prose p {
+  @apply text-base md:text-lg leading-relaxed;
+  @apply text-neutral-700 mb-6;
+}
+
+.prose a {
+  @apply text-primary-600 font-medium;
+  @apply hover:text-primary-700;
+  @apply transition-colors duration-200;
+  @apply underline decoration-primary-200 underline-offset-2;
+  @apply hover:decoration-primary-400;
+}
+
+.prose strong {
+  @apply font-semibold text-neutral-900;
+}
+
+.prose em {
+  @apply italic text-neutral-600;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-6 space-y-2;
+}
+
+.prose ul {
+  @apply list-disc pl-6;
+}
+
+.prose ol {
+  @apply list-decimal pl-6;
+}
+
+.prose li {
+  @apply text-base md:text-lg leading-relaxed;
+  @apply text-neutral-700;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary-400;
+  @apply pl-6 py-2 my-8;
+  @apply italic text-neutral-600;
+  @apply bg-neutral-50 rounded-r-xl;
+}
+
+.prose code {
+  @apply bg-neutral-100 text-neutral-800;
+  @apply px-2 py-0.5 rounded-md;
+  @apply text-sm font-mono;
+  @apply before:content-[''] after:content-[''];
+}
+
+.prose pre {
+  @apply bg-neutral-900 text-neutral-100;
+  @apply p-6 rounded-2xl;
+  @apply overflow-x-auto my-8;
+  @apply shadow-apple-lg;
+}
+
+.prose pre code {
+  @apply bg-transparent text-inherit;
+  @apply p-0 text-sm;
+}
+
+.prose img {
+  @apply rounded-2xl my-8;
+  @apply shadow-apple-md;
+  @apply w-full h-auto;
+}
+
+.prose table {
+  @apply w-full my-8;
+  @apply border-collapse;
+  @apply rounded-xl overflow-hidden;
+  @apply shadow-apple-sm;
+}
+
+.prose thead {
+  @apply bg-neutral-100;
+}
+
+.prose th {
+  @apply px-6 py-4;
+  @apply text-left font-semibold text-neutral-900;
+  @apply border-b-2 border-neutral-200;
+}
+
+.prose td {
+  @apply px-6 py-4;
+  @apply text-neutral-700;
+  @apply border-b border-neutral-100;
+}
+
+.prose hr {
+  @apply my-12 border-0;
+  @apply border-t-2 border-neutral-200;
+}
+
+/* ============================================
+   响应式优化
+   ============================================ */
+
+@media (max-width: 640px) {
+  .prose {
+    @apply text-base;
+  }
+
+  .prose h1 {
+    @apply text-3xl;
+  }
+
+  .prose h2 {
+    @apply text-2xl;
+  }
+
+  .prose h3 {
+    @apply text-xl;
+  }
+}
+
+/* ============================================
+   打印样式
+   ============================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    @apply text-black bg-white;
+  }
+
+  .prose {
+    @apply max-w-full;
+  }
+}
+
+/* ============================================
+   深色模式准备（可选）
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  /*
+  如果需要支持深色模式，可以在这里添加样式
+  建议使用 next-themes 库来管理主题切换
+  */
+}
