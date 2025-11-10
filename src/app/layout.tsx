@@ -40,10 +40,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-gray-900 antialiased">
+      <body className="bg-white text-neutral-900 antialiased">
         <div className="min-h-screen flex flex-col">
           <Navigation />
-          <main className="flex-grow">
+          <main className="flex-grow pt-16">
             {children}
           </main>
           <Footer />

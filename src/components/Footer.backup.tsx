@@ -5,16 +5,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { getAssetPath } from '@/lib/utils'
 
-/**
- * Apple风格Footer组件
- *
- * 设计特点：
- * 1. 增加垂直间距，提升阅读舒适度
- * 2. 优化字体大小和字重层次
- * 3. 改进链接hover状态
- * 4. 更清晰的视觉分隔
- */
-
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState(2024)
 
@@ -44,25 +34,25 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
-            <div className="flex items-center mb-6">
-              <div className="w-10 h-10 mr-3">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 mr-3">
                 <Image
                   src={getAssetPath("/logo.png")}
                   alt="AI Latent Space"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain rounded-full"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain rounded-logo"
                 />
               </div>
-              <span className="font-semibold text-lg text-neutral-900 tracking-tight">
+              <span className="font-bold text-lg text-brand-green">
                 AI Latent Space
               </span>
             </div>
-            <p className="text-neutral-600 text-base leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               Exploring the frontiers of artificial intelligence through daily research,
               insights, and technical deep-dives.
             </p>
@@ -70,19 +60,13 @@ const Footer = () => {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-semibold text-neutral-900 mb-6 text-[15px] tracking-tight">
-                {category}
-              </h3>
-              <ul className="space-y-3">
+              <h3 className="font-semibold text-gray-900 mb-4">{category}</h3>
+              <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="
-                        text-neutral-600 hover:text-neutral-900
-                        text-[15px] transition-all duration-200 ease-apple
-                        hover:translate-x-1
-                      "
+                      className="text-gray-600 hover:text-gray-900 text-sm transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -93,29 +77,15 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-neutral-600 text-[15px]">
+        <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-600 text-sm">
             © {currentYear} AI Latent Space. All rights reserved.
           </p>
-          <div className="flex space-x-8 mt-6 md:mt-0">
-            <Link
-              href="/privacy"
-              className="
-                text-neutral-600 hover:text-neutral-900
-                text-[15px] transition-all duration-200 ease-apple
-                hover:translate-x-1
-              "
-            >
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link href="/privacy" className="text-gray-600 hover:text-gray-900 text-sm">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="
-                text-neutral-600 hover:text-neutral-900
-                text-[15px] transition-all duration-200 ease-apple
-                hover:translate-x-1
-              "
-            >
+            <Link href="/terms" className="text-gray-600 hover:text-gray-900 text-sm">
               Terms of Service
             </Link>
           </div>

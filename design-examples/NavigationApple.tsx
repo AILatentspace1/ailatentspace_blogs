@@ -14,10 +14,9 @@ import { getAssetPath } from '@/lib/utils'
  * 2. 精致的hover状态
  * 3. 流畅的动画过渡
  * 4. 清晰的视觉层次
- * 5. 滚动状态监听
  */
 
-const Navigation = () => {
+const NavigationApple = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -176,4 +175,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default NavigationApple
